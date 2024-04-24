@@ -1,0 +1,4 @@
+/usr/share/opengl-games-utils/opengl-game-functions.sh
+/usr/share/flightgear/Timezone/America/Los_Angeles
+/usr/share/flightgear/Models/Communications/radio-medium.xml
+/usr/share/flightgear/Models/Airport/localizer.xml

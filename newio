@@ -1,0 +1,51 @@
+#!/bin/gnuplot
+
+set terminal postscript eps size 10, 4 enhanced "Helvetica" 18
+set output 'io_output.eps'
+
+set multiplot layout 2, 1
+set tmargin 3
+
+set lmargin at screen 0.1
+
+set title "<Without ClusterFetch>" offset -50, 0
+set xlabel "Time (sec)" 
+set ylabel "Total I/O Request Size (KB)"
+
+set obj 1 rect from 16.2, 0 to 24, 400 fc lt -1 fs solid 0.25 noborder
+set obj 2 rect from 27, 0 to 33.5, 400 fc lt -1 fs solid 0.25 noborder
+set obj 3 rect from 34, 0 to 38.1, 400 fc lt -1 fs solid 0.25 noborder
+
+plot "wopf/iosize_log.txt" using ($1-730):($2/1024) lt 1 lc 1 with steps notitle
+set xrange[0:45]
+
+unset obj 1
+unset obj 2
+unset obj 3
+unset obj 4
+unset obj 5
+
+set style line 1 lt 2 lc rgb "black" lw 1
+
+set arrow 1 from first 19.5, 100000 to first 16.2, screen 0.6 nohead ls 1
+set arrow 2 from first 21.5, 100000 to first 24.0, screen 0.6 nohead ls 1
+set arrow 3 from first 27.8, 100000 to first 27.0, screen 0.6 nohead ls 1
+set arrow 4 from first 29.8, 100000 to first 33.5, screen 0.6 nohead ls 1
+set arrow 5 from first 35.5, 100000 to first 34.0, screen 0.6 nohead ls 1
+set arrow 6 from first 37.5, 100000 to first 38.1, screen 0.6 nohead ls 1
+
+set lmargin at screen 0.1
+
+set title "<With ClusterFetch>" offset -51, 0
+set xlabel "Time (sec)" 
+set ylabel "Total I/O Request Size (KB)"
+
+set obj 1 rect from 19.5, 1 to 21.5, 100000 fc lt -1 fs solid 0.25 noborder
+set obj 2 rect from 27.8, 1 to 29.8, 100000 fc lt -1 fs solid 0.25 noborder
+set obj 3 rect from 35.5, 1 to 37.5, 100000 fc lt -1 fs solid 0.25 noborder
+
+set logscale y
+plot "wipf/iosize_log.txt" using ($1-686):($2/1024) lt 1 lc 1 with steps notitle
+set xrange[0:45]
+
+unset multiplot

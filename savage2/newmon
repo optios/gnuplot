@@ -1,0 +1,20 @@
+#!/bin/gnuplot
+
+set terminal postscript eps size 10, 2 enhanced "Helvetica" 18
+set output 'mon_output.eps'
+
+set xlabel "Time (sec)" 
+set ylabel "Total I/O Request Size (KB)"
+
+set obj 1 rect from 3.7, 0 to 9.9, 400 fc lt -1 fs solid 0.25 noborder
+set obj 2 rect from 16.2, 0 to 24, 400 fc lt -1 fs solid 0.25 noborder
+set obj 3 rect from 27, 0 to 33.5, 400 fc lt -1 fs solid 0.25 noborder
+set obj 4 rect from 34, 0 to 38.1, 400 fc lt -1 fs solid 0.25 noborder
+
+set label 'game\_settings\_local.cfg' at 6.5, 320 center
+set label 'mesh\_shadowed.psh' at 20, 320 center
+set label 'practice.s2z' at 30, 320 center
+set label 'mesh\_shadowed\_occlusion.psh' at 34.5, 320 left
+
+plot "wopf/iosize_log.txt" using ($1-730):($2/1024) lt 1 lc 1 with steps notitle
+set xrange[0:45]

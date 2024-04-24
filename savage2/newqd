@@ -1,0 +1,79 @@
+#!/bin/gnuplot
+
+#set terminal png enhanced size 1920, 1080 font ",22"
+#set output "qd_output.png"
+
+set terminal postscript eps size 10, 4 enhanced "Helvetica" 18
+set output 'qd_output.eps'
+
+set multiplot layout 2, 1
+set tmargin 3
+
+set title "<Without ClusterFetch>" offset -52, 0 
+set xlabel "Time (sec)"
+set ylabel "Queue Depth"
+#set title "Service Duration"
+#set style line 1 lt 2 lc rgb "red" lw 3
+#set style line 2 lt 2 lc rgb "green" lw 2
+#unset label
+#set xtics ("0" 0, "0.1" 1e+8, "0.2" 2e+8, "0.3" 3e+8, "0.4" 4e+8, "0.5" 5e+8, "0.6" 6e+8, "0.7" 7e+8, "0.8" 8e+8, "0.9" 9e+8)
+#set xrange [0:180]
+set obj 1 rect from 16.2, 0 to 24, 35 fc lt -1 fs solid 0.25 noborder
+set obj 2 rect from 27, 0 to 33.5, 35 fc lt -1 fs solid 0.25 noborder
+set obj 3 rect from 34, 0 to 38.1, 35 fc lt -1 fs solid 0.25 noborder
+set obj 4 rect from 16.0, 0 to 16.1, 35 fc lt -1 fs pattern 2 noborder
+set obj 5 rect from 38.2, 0 to 38.3, 35 fc lt -1 fs pattern 2 noborder
+set style arrow 1 heads filled size 0.5, 45
+set arrow 1 from 16.3, 7 to 38.0, 7 arrowstyle 1
+set label "22s" at 27, 10 center
+
+plot "wopf/queue_depth.txt" using ($1-730):2 lt 1 lc 1 with lines notitle 
+set xrange [0:45]
+#set terminal png
+#set terminal png enhanced size 1280, 480 font ",22"
+#set output "qd_output.png"
+#replot
+#
+#
+unset obj 1
+unset obj 2
+unset obj 3
+unset obj 4 
+unset obj 5
+unset arrow
+unset label
+
+set style line 1 lt 2 lc rgb "black" lw 1
+set arrow 2 from first 19.3, 35 to first 16.0, screen 0.6 nohead ls 1
+set arrow 3 from first 37.7, 35 to first 38.3, screen 0.6 nohead ls 1
+
+set title "<With ClusterFetch>" offset -53, 0
+set xlabel "Time (sec)"
+set ylabel "Queue Depth"
+#set title "Service Duration"
+#set style line 1 lt 2 lc rgb "red" lw 3
+#set style line 2 lt 2 lc rgb "green" lw 2
+#unset label
+#set xtics ("0" 0, "0.1" 1e+8, "0.2" 2e+8, "0.3" 3e+8, "0.4" 4e+8, "0.5" 5e+8, "0.6" 6e+8, "0.7" 7e+8, "0.8" 8e+8, "0.9" 9e+8)
+#set xrange [0:180]
+
+set obj 1 rect from 19.5, 0 to 21.5, 35 fc lt -1 fs solid 0.25 noborder
+set obj 2 rect from 27.8, 0 to 29.8, 35 fc lt -1 fs solid 0.25 noborder
+set obj 3 rect from 35.5, 0 to 37.5, 35 fc lt -1 fs solid 0.25 noborder
+set obj 4 rect from 19.3, 0 to 19.4, 35 fc lt -1 fs pattern 2 noborder
+set obj 5 rect from 37.6, 0 to 37.7, 35 fc lt -1 fs pattern 2 noborder
+set arrow 1 from 19.6, 7 to 37.4, 7 arrowstyle 1
+set label "18.5s" at 27, 10 center
+
+plot "wipf/queue_depth.txt" using ($1-686):2 lt 1 lc 1 with lines notitle 
+set xrange [0:45]
+#set terminal png
+#set terminal png enhanced size 1280, 480 font ",22"
+#set output "qd_output.png"
+#replot
+#
+#
+#set terminal png
+#replot
+unset multiplot
+

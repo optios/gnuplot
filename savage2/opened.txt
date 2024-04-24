@@ -1,0 +1,5 @@
+/root/.savage2/game/game_settings_local.cfg
+/root/.savage2/game/game_settings_local.cfg
+/usr/local/games/Savage2/game/core/shaders/ps_glsl/mesh_shadowed.psh
+/usr/local/games/Savage2/game/maps/practice.s2z
+/usr/local/games/Savage2/game/core/shaders/ps_glsl/mesh_shadowed_occlusion.psh

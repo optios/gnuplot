@@ -1,0 +1,1 @@
+/opt/eclipse/configuration/org.eclipse.osgi/.manager/.fileTableLock

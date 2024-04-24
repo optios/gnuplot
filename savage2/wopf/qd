@@ -1,0 +1,16 @@
+#!/bin/gnuplot
+
+set xlabel "Time (sec)"
+set ylabel "Queue depth"
+#set title "Service Duration"
+#set style line 1 lt 2 lc rgb "red" lw 3
+#set style line 2 lt 2 lc rgb "green" lw 2
+#unset label
+#set xtics ("0" 0, "0.1" 1e+8, "0.2" 2e+8, "0.3" 3e+8, "0.4" 4e+8, "0.5" 5e+8, "0.6" 6e+8, "0.7" 7e+8, "0.8" 8e+8, "0.9" 9e+8)
+#set xrange [0:180]
+plot "queue_depth.txt" using ($1-730):2 lt 1 lc 1 with lines notitle 
+set xrange [0:40]
+set terminal png
+set terminal png enhanced size 1280, 480 font ",22"
+set output "qd_output.png"
+replot
